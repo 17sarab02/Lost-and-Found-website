@@ -1,0 +1,4 @@
+.mytabs{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "button1 button2" "tab tab";
+}

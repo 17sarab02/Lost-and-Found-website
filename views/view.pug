@@ -1,0 +1,61 @@
+doctype
+html
+    head
+        title View Entry
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        style
+            include ../static/style.css
+            include ../static/navigation_bar.css
+            include ../static/view_entry.css
+    body
+        nav
+            div#logo.nav_element(style="z-index: -3;")
+                div#college_logo
+                    img(src="Smaller Logo.png", alt="")
+            div#navigation.nav_element
+                a(href="/")
+                    button
+                        p HomePage
+                        img(src="home.png", alt="")
+                a(href="/createEntry")
+                    button
+                        p Create an Entry
+                        img(src="create.png", alt="")
+            div#user_details.nav_element
+                div#details
+                    h3=user.fullname
+                    h4=user.username
+                    form(action="/logout", method="POST")
+                        button(type="submit")
+                            p Logout
+                            img(src="Logout.png", alt="")
+        div#article
+            div.outlook
+                h1.article_title=article.title
+                h3.article_category=article.category
+                p.article_description=article.description
+            div.article_images
+                each val in article.image_name_saved
+                    div.list_images(style="background: url('../uploads/"+val+"'); background-size: cover; background-position: center;")
+            div.outcome
+                if (collection == "lost")
+                    h3="Lost by: "+article.lost_by_user+" "+article.lost_by_name
+                else if (collection == "found")
+                    h3="Found by: "+article.found_by_user+" "+article.found_by_name
+                if (collection == "lost")
+                    h4="Room to deliver: "+article.room_to_deliver
+                else if (collection == "found")
+                    h4="Room to collect from: "+article.room_to_collect_from
+                p="Contact: "+article.contact
+            div.time_and_place
+                h4="Time of post: "+"  "+article.time_of_post.toLocaleString()
+                if (collection == "lost")
+                    h4="Time last seen at: "+"  "+article.time_last_seen_at.toLocaleString()
+                else if (collection == "found")
+                    h4="Time collected at: "+"  "+article.time_collected_at.toLocaleString()
+                if (collection == "lost")
+                    h4="Place last seen at: "+article.place_last_seen_at
+                else if (collection == "found")
+                    h4="Place collected from: "+article.place_collected_from

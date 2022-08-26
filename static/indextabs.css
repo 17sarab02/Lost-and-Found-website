@@ -1,0 +1,23 @@
+.mytabs{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "button1 button2 button3" "tab tab tab";
+}
+
+form label img{
+    position: relative;
+    top: 5px;
+    height: 20px;
+    margin: 0px 5px;
+}
+
+#userdiv{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border: 2px red solid;
+    border-radius: 30px;
+    width: fit-content;
+
+}

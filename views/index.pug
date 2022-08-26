@@ -1,0 +1,111 @@
+doctype
+html
+    head
+        title Lost and Found - HomePage
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        style
+            include ../static/style.css
+            include ../static/articles.css
+            include ../static/indextabs.css
+            include ../static/navigation_bar.css
+    body
+        nav
+            div#logo.nav_element
+                div#college_logo
+                    img(src="Smaller Logo.png", alt="")
+            div#navigation.nav_element
+                a(href="/")
+                    button
+                        p HomePage
+                        img(src="home.png", alt="")
+                a(href="/createEntry")
+                    button
+                        p Create an Entry
+                        img(src="create.png", alt="")
+            div#user_details.nav_element
+                div#details
+                    h3=user.fullname
+                    h4=user.username
+                    form(action="/logout", method="POST")
+                        button(type="submit")
+                            p Logout
+                            img(src="Logout.png", alt="")
+        div.mytabs
+            input(type="radio", name="mytabs", checked=true, id="tab1")
+            label(for="tab1", class="tablabel") Lost items
+            div.tab
+                each article in lost
+                    div.articles(style="background: rgba(143, 185, 206, 0.3);")
+                        div.article_image(style="background: url('uploads/"+article.image_name_saved[0]+"'); background-size: cover; border-radius: 10px; background-position: center;")
+                        div.outlook
+                            h2=article.title
+                            h4=article.category
+                            p=article.description
+                        div.outcome
+                            h4="Lost by: "+article.lost_by_user+" "+article.lost_by_name
+                            if(article.room_to_deliver)
+                                h4="Room to deliver: "+article.room_to_deliver
+                            if(article.contact)
+                                p="Contact: "+article.contact
+                        div.interaction
+                            form(action="/view/"+article.id, method="GET")
+                                button.view_button(type="submit", value="lost", name="collection") View
+                            if(user.username == article.lost_by_user)
+                                form(action="/"+article.id, method="POST")
+                                    input(type="text", name="task", value="Delete", style="display: none")
+                                    button.delete_button(type="submit", name="collection", value="lost") Delete
+                            else
+                                form(action="/"+article.id, method="POST")
+                                    input(type="text", name="task", value="Respond", style="display: none")
+                                    button.respond_button(type="submit", name="collection", value="lost") Found!
+            
+            input(type="radio", name="mytabs", id="tab2")
+            label(for="tab2", class="tablabel") Found Items
+            div.tab
+                each article in found
+                    div.articles(style="background: rgba(200, 150, 240, 0.35);")
+                        div.article_image(style="background: url('uploads/"+article.image_name_saved[0]+"'); background-size: cover; border-radius: 10px;")
+                        div.outlook
+                            h2=article.title
+                            h4=article.category
+                            p=article.description
+                        div.outcome
+                            h4="Found by: "+article.found_by_user+" "+article.found_by_name
+                            if(article.room_to_collect_from)
+                                h4="Room to collect from: "+article.room_to_collect_from
+                            if(article.contact)
+                                p="Contact: "+article.contact
+                        div.interaction
+                            form(action="/view/"+article.id, method="GET")
+                                button.view_button(type="submit", value="found", name="collection") View
+                            if(user.username == article.found_by_user)
+                                form(action="/"+article.id, method="POST")
+                                    input(type="text", name="task", value="Delete", style="display: none")
+                                    button.delete_button(type="submit", value="found", name="collection") Delete
+                            else
+                                form(action="/"+article.id, method="POST")
+                                    input(type="text", name="task", value="Respond", style="display: none")
+                                    button.respond_button(type="submit", name="collection", value="found") Claim!
+            
+            input(type="radio", name="mytabs", id="tab3")
+            label(for="tab3", class="tablabel") Claimed
+            div.tab
+                each article in claims
+                    div.claim_articles(style="background: rgb(99, 255, 80, 0.35);")
+                        div.article_image(style="background: url('uploads/"+article.image_name_saved[0]+"'); background-size: cover; border-radius: 10px;")
+                        div.outlook
+                            h2=article.title
+                            h4=article.category
+                            p=article.description
+                        div.outcome
+                            h4="Lost by: "+article.lost_by_user+" "+article.lost_by_name
+                            h4="Found by: "+article.found_by_user+" "+article.found_by_name
+                            if(article.contact)
+                                p="Contact: "+article.contact
+                        div.exchange
+                            if(article.room_exchanged_at)
+                                h4="Room exchanged at: "+article.room_exchanged_at
+                            h4="Time of posting: "+article.time_of_post.toLocaleString()
+                            h4="Time of claim: "+article.time_of_claim.toLocaleString()

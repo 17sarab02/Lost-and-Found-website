@@ -1,0 +1,18 @@
+doctype
+html
+    head
+        title Redirect
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        style
+            include ../static/redirect.css
+    body
+        div#message1
+            h1=message1
+        div#loading_icon
+            img(src="load.png", alt="")
+        div#message2
+            h2=message2
+        script
+            include redirect.js

@@ -1,0 +1,51 @@
+doctype
+html
+    head
+        title Lost and Found - Login
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        style
+            include ../static/style.css
+            include ../static/logintabs.css
+            include ../static/form_css.css
+    body
+        div.mytabs            
+            input(type="radio", name="mytabs", id="tab1", checked=true)
+            label(for="tab1", class="tablabel") Login
+            div.tab
+                div.form_container
+                    form(action="/login", method="POST")
+                        div
+                            label(for="username") Username
+                                img(src="user_icon.png", alt="")
+                            input(type="text", name="username", id="username", required=true)
+                        div
+                            label(for="password") Password
+                                img(src="key_icon.png", alt="")
+                            input(type="password", name="password", id="password", required=true)
+                        button(type="submit", class="submit_button") Login
+            input(type="radio", name="mytabs", id="tab2")
+            label(for="tab2", class="tablabel") Register
+            div.tab
+                div.form_container
+                    form(action="/register", method="POST")
+                        div
+                            label(for="fullname") Fullname 
+                            input(type="text", name="fullname", id="fullname", required=true)
+                        div
+                            label(for="age") Age
+                            input(type="text", name="age", id="age", required=true)
+                        div
+                            label(for="email") Email
+                            input(type="email", name="email", id="email", required=true)
+                        div
+                            label(for="contact") Contact
+                            input(type="text", name="contact", id="contact", required=true)
+                        div
+                            label(for="username") Username / Roll. No.
+                            input(type="text", name="username", id="username", required=true)
+                        div
+                            label(for="password") Password
+                            input(type="password", name="password", id="password", required=true)
+                        button(type="submit", class="submit_button") Register

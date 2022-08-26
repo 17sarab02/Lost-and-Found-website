@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada&family=Roboto:ital,wght@0,100;0,900;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada&family=Roboto:ital,wght@0,100;0,900;1,900&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: rgba(0,0,0,0.85);
+    font-family: 'Radio Canada', sans-serif;
+    transition: all 0.2s ease-in-out;
+}
+
+:root {
+    --selected_tab: rgba(255, 255, 255, 0.85);
+    --unselected_tab: rgba(255, 255, 255, 0.6);
+}
+
+body {
+    padding-top: 100px;
+    background: url('wallpaper.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.mytabs {
+    display: grid;
+    width: 50vw;
+    margin: 50px auto;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.mytabs input[type="radio"] {
+    display: none;
+}
+
+.tablabel {
+    padding: 15px;
+    background: var(--unselected_tab);
+    color: rgb(30, 30, 50);
+    font-weight: bold;
+    text-align: center;
+}
+
+.mytabs .tab {
+    width: 100%;
+    padding: 20px;
+    background: var(--selected_tab);
+    order: 1;
+    display: none;
+}
+
+.mytabs input[type='radio']:checked + label + .tab {
+    display: block;
+}
+
+.mytabs input[type="radio"]:checked + label {
+    background: var(--selected_tab);
+}
+
+.mytabs input[type="radio"]:not(:checked) + label:hover {
+    filter: invert();
+}
+
+.tab{
+    grid-area: tab;
+}
+
+#tab1+label{
+    grid-area: button1;
+}
+
+#tab2+label{
+    grid-area: button2;
+}
+
+#tab3+label{
+    grid-area: button3;
+}
+
+input{
+    padding: 2px 5px;
+}
+
+@media only screen and (max-width: 730px) {
+    .mytabs{
+        width: 75vw;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .mytabs{
+        width: 95vw;
+    }
+}

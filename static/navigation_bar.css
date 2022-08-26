@@ -1,0 +1,91 @@
+nav{
+    position: fixed;
+    width: 100vw;
+    top: 0px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav_element{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 120px;
+}
+
+.nav_element div{
+    height: 100%;
+}
+
+
+#college_logo img{
+    height: 100%;
+}
+
+#logo{
+    transform: translateX(-3vw);
+}
+
+#details{
+    text-align:center;
+}
+
+#details *{
+    margin: 2px;
+}
+
+nav button{
+    padding: 7px;
+    margin: 0px 10px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    background: rgb(50, 50, 50);
+    border-radius: 10px;
+    border: none;
+}
+
+nav button p {
+    color: white;
+}
+
+nav button:hover{
+    background: black;
+}
+
+nav button:active{
+    filter: invert();
+}
+
+#navigation{
+    border-radius: 0px 0px 25px 25px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+nav button img{
+    display: none;
+}
+
+#user_details{
+    background: red;
+    padding: 10px;
+    border-radius: 0px 0px 25px 25px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+@media only screen and (max-width: 800px) {
+    #college_logo{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    nav button p{
+        display: none;
+    }
+    nav button img{
+        display: block;
+        height: 30px;
+    }
+}

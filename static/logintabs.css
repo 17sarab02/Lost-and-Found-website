@@ -1,0 +1,11 @@
+.mytabs{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "button1 button2" "tab tab";
+}
+
+form label img{
+    position: relative;
+    top: 5px;
+    height: 20px;
+    margin: 0px 5px;
+}

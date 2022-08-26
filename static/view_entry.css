@@ -1,0 +1,108 @@
+#article {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-gap: 1rem;
+    grid-template-areas: "outlook outcome time_and_place" "img img img";
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 30px;
+    width: 70vw;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.outlook{
+    padding: 0px 10px;
+}
+
+.article_images{
+    position: relative;
+    grid-area: img;
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    margin: 0px auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list_images{
+    width: 200px;
+    height: 200px;
+    margin: 5px 5px;
+    border-radius: 20px;
+    filter: brightness(60%);
+}
+
+.list_images:hover{
+    border-radius: 5px;
+    filter: brightness(120%);
+}
+
+.list_images:active{
+    position: absolute;
+    filter: brightness(120%);
+    width: 300px;
+    height: 300px;
+    max-width: 70vw;
+    max-height: 70vw;
+    transform: translate(-17%, -70%);
+    z-index: 5;
+}
+
+.outlook{
+    grid-area: outlook;
+}
+
+.outcome{
+    grid-area: outcome;
+}
+
+.time_and_place{
+    grid-area: time_and_place;
+}
+
+.time_and_place *{
+    margin: 5px 10px;
+}
+
+.outcome *{
+    margin: 5px 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+    #article{
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+    .outlook p{
+        display: none;
+    }
+    .list_images{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    #article{
+        grid-template-columns: 0.8fr 1fr;
+        grid-template-areas: "outlook outlook" "outcome img" "time_and_place img";
+    }
+    .outlook p{
+        display: block;
+    }
+    .list_images{
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #article{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "outlook outlook" "outcome outcome" "time_and_place time_and_place" "img img ";
+    }
+    .list_images{
+        width: 90px;
+        height: 90px;
+    }
+}

@@ -1,0 +1,142 @@
+.articles{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-areas: "img outlook outcome" "interaction interaction interaction";
+    grid-gap: 0.5rem;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.claim_articles{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-areas: "img outlook outcome" "interaction interaction interaction";
+    grid-gap: 0.8rem;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.article_image{
+    background-size: cover;
+    width: 150px; height: 150px;
+    grid-area: img;
+}
+
+.articles div{
+    border: none;
+}
+
+.outlook{
+    grid-area: outlook;
+}
+
+.outcome{
+    background: rgba(0,0,0,0.1);
+    padding: 7px;
+    border-radius: 5px;
+    grid-area: outcome;
+    width: fit-content;
+    margin: auto;
+}
+
+.outcome *{
+    margin-bottom: 7px;
+}
+
+.interaction{
+    grid-area: interaction;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.exchange{
+    grid-area: interaction;
+    padding-top: 10px;
+}
+
+.interaction button{
+    padding: 7px 10px;
+    margin: 2px 0px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 10px;    
+}
+
+.delete_button{
+    background: rgb(142, 32, 32);
+}
+
+.view_button{
+    background: rgb(79, 79, 154);
+}
+
+.update_button{
+    background: rgb(37, 132, 95);
+}
+
+.respond_button{
+    background: rgb(17, 133, 17);
+}
+
+.delete_button:hover{
+    background: rgb(87, 14, 14);
+}
+
+.view_button:hover{
+    background: rgb(29, 29, 81);
+}
+
+.update_button:hover{
+    background: rgb(16, 67, 47);
+}
+
+.respond_button:hover{
+    background: rgb(3, 58, 3);
+}
+
+@media only screen and (max-width: 1300px) {
+    .articles{
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 0.7fr 0.7fr 1fr;
+        grid-template-areas: "img outlook" "img interaction" "outcome outcome";
+    }
+    .interaction{
+        padding-top: 0px;
+    }
+    .article_image{
+        width: 130px;
+        height: 130px;
+    }
+    .outlook p{
+        display: none;
+    }
+    .outcome{
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .outlook h2{
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .claim_articles{
+        grid-template-columns: 3fr 8fr;
+        grid-template-rows: 0.4fr 0.6fr 1fr;
+        grid-template-areas: "img interaction" "img interaction" "outlook outcome";
+    }
+    .outlook, .outcome, .interaction, .exchange {
+        height: fit-content;
+    }
+    .claim_articles .outlook p{
+        display: block;
+    }
+}

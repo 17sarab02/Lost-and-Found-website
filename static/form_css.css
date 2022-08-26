@@ -1,0 +1,42 @@
+.form_container{
+    display: flex;
+    justify-content: center;
+}
+form{
+    width: 80%;
+}
+form div{
+    display: grid;
+    margin: 10px;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 2fr;
+}
+
+form input[type="textarea"]{
+    height: 100px;
+}
+.submit_button{
+    display: block;
+    margin: auto;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    background: rgb(92, 56, 132);
+    color: white;
+}
+
+@media only screen and (max-width: 1100px) {
+    form{
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    form div{
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+        text-align: center;
+    }
+}

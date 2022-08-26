@@ -1,0 +1,104 @@
+doctype
+html
+    head
+        title Lost and Found - Entry
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        style
+            include ../static/style.css
+            include ../static/entrytabs.css
+            include ../static/form_css.css
+            include ../static/navigation_bar.css
+    body
+        nav
+            div#logo.nav_element
+                div#college_logo
+                    img(src="Smaller Logo.png", alt="")
+            div#navigation.nav_element
+                a(href="/")
+                    button
+                        p HomePage
+                        img(src="home.png", alt="")
+                a(href="/createEntry")
+                    button
+                        p Create an Entry
+                        img(src="create.png", alt="")
+            div#user_details.nav_element
+                div#details
+                    h3=user.fullname
+                    h4=user.username
+                    form(action="/logout", method="POST")
+                        button(type="submit")
+                            p Logout
+                            img(src="Logout.png", alt="")
+        div.mytabs
+            input(type="radio", name="mytabs", checked=true, id="tab1")
+            label(for="tab1", class="tablabel") Lost an Item
+            div.tab
+                div.form_container
+                    form(action="/createLost", method="POST", enctype="multipart/form-data",)
+                        div
+                            label(for="title") Lost Item Title 
+                            input(type="text", name="title", required=true)
+                        div
+                            label(for="contact") Contact 
+                            input(type="text", name="contact", id="contact", required=true, value=user.contact)
+                        div
+                            label(for="place_last_seen_at") Place Last Seen At 
+                            input(type="text", name="place_last_seen_at", id="place_last_seen_at")
+                        div
+                            label(for="time_last_seen_at") Time Last Seen At 
+                            input(type="datetime-local", name="time_last_seen_at", id="time_last_seen_at")
+                        div
+                            label(for="category") Category 
+                            select(name="category" id="category")
+                                option(value="Electronics") Electronics
+                                option(value="Accessories") Accessories
+                                option(value="Books") Books
+                                option(value="Others") Others
+                        div
+                            label(for="description") Description 
+                            input(type="textarea", id="description", name="description")
+                        div
+                            label(for="room_to_deliver") Room to Deliver
+                            input(type="number", id="room_to_deliver", name="room_to_deliver")
+                        div
+                            label(for="myimage") Upload images (maximum : 4)
+                            input(type="file", name="myimage", id="myimage" multiple /)
+                        button(type="submit", class="submit_button") Create 
+            
+            input(type="radio", name="mytabs", id="tab2")
+            label(for="tab2", class="tablabel") Found an Item
+            div.tab
+                div.form_container
+                    form(action="/createFound", method="POST", enctype="multipart/form-data")
+                        div
+                            label(for="title") Found Item Title 
+                            input(type="text", id="title", name = "title", required=true)
+                        div
+                            label(for="contact") Contact 
+                            input(type="text", name="contact", id="contact", required=true, value=user.contact)
+                        div
+                            label(for="place_collected_from") Place collected from 
+                            input(type="text", name="place_collected_from", id="place_collected_from")
+                        div
+                            label(for="time_collected_at") Time collected at 
+                            input(type="datetime-local", name="time_collected_at", id="time_collected_at")
+                        div
+                            label(for="category") Category 
+                            select(name="category" id="category")
+                                option(value="Electronics") Electronics
+                                option(value="Accessories") Accessories
+                                option(value="Books") Books
+                                option(value="Others") Others
+                        div
+                            label(for="description") Description 
+                            input(type="textarea", id="description", name="description")
+                        div
+                            label(for="room_to_collect_from") Room to Collect from 
+                            input(type="number", id="room_to_collect_from", name="room_to_collect_from")
+                        div
+                            label(for="myimage") Upload images (maximum : 4)
+                            input(type="file", name="myimage", id="myimage" multiple /)
+                        button(type="submit", class="submit_button") Create 
